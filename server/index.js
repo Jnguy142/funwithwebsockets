@@ -8,7 +8,8 @@ app.use(express.static(path.resolve(__dirname, '../static')));
 
 io.on('connection', function (socket) {
     socket.on('chat message', function(msg){
-        console.log('message: ' + msg);
+        io.emit('chat message', msg);
+        console.log(msg);
     });
 });
 
